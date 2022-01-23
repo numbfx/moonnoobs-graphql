@@ -1,0 +1,16 @@
+{
+  "name": "moon",
+  "license": "UNLICENSED",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ moon/moon",
+    "create-local": "graph create --node http://localhost:8020/ moon/moon",
+    "remove-local": "graph remove --node http://localhost:8020/ moon/moon",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 moon/moon"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.23.2",
+    "@graphprotocol/graph-ts": "0.23.1"
+  }
+}
