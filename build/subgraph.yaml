@@ -1,6 +1,6 @@
 specVersion: 0.0.2
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum/contract
     name: MoonStaking
@@ -16,30 +16,30 @@ dataSources:
         - MoonStaking
       abis:
         - name: MoonStaking
-          file: ./abis/MoonStaking.json
+          file: MoonStaking\abis\MoonStaking.json
         - name: StakingHelper
-          file: ./abis/StakingHelper.json
+          file: MoonStaking\abis\StakingHelper.json
         - name: sMoon
-          file: ./abis/sMoon.json
+          file: MoonStaking\abis\sMoon.json
         - name: MoonERC20Token
-          file: ./abis/MoonERC20Token.json
+          file: MoonStaking\abis\MoonERC20Token.json
         - name: ERC20
-          file: ./abis/ERC20.json
+          file: MoonStaking\abis\ERC20.json
         - name: MOONCirculatingSupplyContract
-          file: ./abis/MOONCirculatingSupplyContract.json
+          file: MoonStaking\abis\MOONCirculatingSupplyContract.json
         - name: UniswapV2Pair
-          file: ./abis/UniswapV2Pair.json
+          file: MoonStaking\abis\UniswapV2Pair.json
       callHandlers:
         - function: stake(uint256,address)
           handler: handleStake
         - function: unstake(uint256,bool)
           handler: handleUnstake
-      file: ./src/MoonStaking.ts
+      file: MoonStaking\MoonStaking.wasm
   - kind: ethereum/contract
     name: sMoon
     network: aurora
     source:
-      address: '0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9'
+      address: "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9"
       abi: sMoon
     mapping:
       kind: ethereum/events
@@ -49,10 +49,10 @@ dataSources:
         - sMoon
       abis:
         - name: sMoon
-          file: ./abis/sMoon.json
+          file: sMoon\abis\sMoon.json
         - name: MoonERC20Token
-          file: ./abis/MoonERC20Token.json
+          file: sMoon\abis\MoonERC20Token.json
       callHandlers:
         - function: rebase(uint256,uint256)
           handler: rebaseFunction
-      file: ./src/sMoon.ts
+      file: sMoon\sMoon.wasm

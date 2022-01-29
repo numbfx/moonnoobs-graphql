@@ -1,0 +1,99 @@
+{
+  "address": "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_staking",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_MOON",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "MOON",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "stake",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "staking",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x22872c153deee14e7acdba5ffdb1f10471d83c05f01f45533937d0e2c99aa0c7",
+  "receipt": {
+    "to": null,
+    "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+    "contractAddress": "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6",
+    "transactionIndex": 0,
+    "gasUsed": "284963",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0xd8f40c9c751657986f82f121cb63e2b5546ca5d9d7d97863cc8f957899b60b01",
+    "transactionHash": "0x22872c153deee14e7acdba5ffdb1f10471d83c05f01f45533937d0e2c99aa0c7",
+    "logs": [],
+    "blockNumber": 9,
+    "cumulativeGasUsed": "284963",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+    "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0"
+  ],
+  "numDeployments": 1,
+  "solcInputHash": "a0b2dfcb5c40cd6449ab7a60b4c8dc2e",
+  "metadata": "{\"compiler\":{\"version\":\"0.7.5+commit.eb77ed08\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_staking\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_MOON\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"MOON\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"}],\"name\":\"stake\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"staking\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/StakingHelper.sol\":\"StakingHelper\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":999999},\"remappings\":[]},\"sources\":{\"contracts/StakingHelper.sol\":{\"content\":\"/**\\r\\n *Submitted for verification at Etherscan.io on 2021-06-12\\r\\n*/\\r\\n\\r\\n// SPDX-License-Identifier: AGPL-3.0-or-later\\r\\npragma solidity 0.7.5;\\r\\n\\r\\n\\r\\ninterface IERC20 {\\r\\n    function decimals() external view returns (uint8);\\r\\n  /**\\r\\n   * @dev Returns the amount of tokens in existence.\\r\\n   */\\r\\n  function totalSupply() external view returns (uint256);\\r\\n\\r\\n  /**\\r\\n   * @dev Returns the amount of tokens owned by `account`.\\r\\n   */\\r\\n  function balanceOf(address account) external view returns (uint256);\\r\\n\\r\\n  /**\\r\\n   * @dev Moves `amount` tokens from the caller's account to `recipient`.\\r\\n   *\\r\\n   * Returns a boolean value indicating whether the operation succeeded.\\r\\n   *\\r\\n   * Emits a {Transfer} event.\\r\\n   */\\r\\n  function transfer(address recipient, uint256 amount) external returns (bool);\\r\\n\\r\\n  /**\\r\\n   * @dev Returns the remaining number of tokens that `spender` will be\\r\\n   * allowed to spend on behalf of `owner` through {transferFrom}. This is\\r\\n   * zero by default.\\r\\n   *\\r\\n   * This value changes when {approve} or {transferFrom} are called.\\r\\n   */\\r\\n  function allowance(address owner, address spender) external view returns (uint256);\\r\\n\\r\\n  /**\\r\\n   * @dev Sets `amount` as the allowance of `spender` over the caller's tokens.\\r\\n   *\\r\\n   * Returns a boolean value indicating whether the operation succeeded.\\r\\n   *\\r\\n   * IMPORTANT: Beware that changing an allowance with this method brings the risk\\r\\n   * that someone may use both the old and the new allowance by unfortunate\\r\\n   * transaction ordering. One possible solution to mitigate this race\\r\\n   * condition is to first reduce the spender's allowance to 0 and set the\\r\\n   * desired value afterwards:\\r\\n   * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729\\r\\n   *\\r\\n   * Emits an {Approval} event.\\r\\n   */\\r\\n  function approve(address spender, uint256 amount) external returns (bool);\\r\\n\\r\\n  /**\\r\\n   * @dev Moves `amount` tokens from `sender` to `recipient` using the\\r\\n   * allowance mechanism. `amount` is then deducted from the caller's\\r\\n   * allowance.\\r\\n   *\\r\\n   * Returns a boolean value indicating whether the operation succeeded.\\r\\n   *\\r\\n   * Emits a {Transfer} event.\\r\\n   */\\r\\n  function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);\\r\\n\\r\\n  /**\\r\\n   * @dev Emitted when `value` tokens are moved from one account (`from`) to\\r\\n   * another (`to`).\\r\\n   *\\r\\n   * Note that `value` may be zero.\\r\\n   */\\r\\n  event Transfer(address indexed from, address indexed to, uint256 value);\\r\\n\\r\\n  /**\\r\\n   * @dev Emitted when the allowance of a `spender` for an `owner` is set by\\r\\n   * a call to {approve}. `value` is the new allowance.\\r\\n   */\\r\\n  event Approval(address indexed owner, address indexed spender, uint256 value);\\r\\n}\\r\\n\\r\\ninterface IStaking {\\r\\n    function stake( uint _amount, address _recipient ) external returns ( bool );\\r\\n    function claim( address _recipient ) external;\\r\\n}\\r\\n\\r\\ncontract StakingHelper {\\r\\n\\r\\n    address public immutable staking;\\r\\n    address public immutable MOON;\\r\\n\\r\\n    constructor ( address _staking, address _MOON ) {\\r\\n        require( _staking != address(0) );\\r\\n        staking = _staking;\\r\\n        require( _MOON != address(0) );\\r\\n        MOON = _MOON;\\r\\n    }\\r\\n\\r\\n    function stake( uint _amount ) external {\\r\\n        IERC20( MOON ).transferFrom( msg.sender, address(this), _amount );\\r\\n        IERC20( MOON ).approve( staking, _amount );\\r\\n        IStaking( staking ).stake( _amount, msg.sender );\\r\\n        IStaking( staking ).claim( msg.sender );\\r\\n    }\\r\\n}\",\"keccak256\":\"0x1d98130efaf95e0be9142e552035a02827ec6e44a17dadd76b1fd30bb6f27910\",\"license\":\"AGPL-3.0-or-later\"}},\"version\":1}",
+  "bytecode": "0x60c060405234801561001057600080fd5b506040516104fd3803806104fd8339818101604052604081101561003357600080fd5b5080516020909101516001600160a01b03821661004f57600080fd5b6001600160601b0319606083901b166080526001600160a01b03811661007457600080fd5b606081811b6001600160601b03191660a052608051901c91506001600160a01b03166104326100cb6000398061011552806101f852806103da52508060a052806101c752806102bc528061037652506104326000f3fe608060405234801561001057600080fd5b50600436106100415760003560e01c80634cf088d914610046578063a694fc3a14610077578063ef96d9ab14610096575b600080fd5b61004e61009e565b6040805173ffffffffffffffffffffffffffffffffffffffff9092168252519081900360200190f35b6100946004803603602081101561008d57600080fd5b50356100c2565b005b61004e6103d8565b7f000000000000000000000000000000000000000000000000000000000000000081565b604080517f23b872dd00000000000000000000000000000000000000000000000000000000815233600482015230602482015260448101839052905173ffffffffffffffffffffffffffffffffffffffff7f000000000000000000000000000000000000000000000000000000000000000016916323b872dd9160648083019260209291908290030181600087803b15801561015d57600080fd5b505af1158015610171573d6000803e3d6000fd5b505050506040513d602081101561018757600080fd5b5050604080517f095ea7b300000000000000000000000000000000000000000000000000000000815273ffffffffffffffffffffffffffffffffffffffff7f0000000000000000000000000000000000000000000000000000000000000000811660048301526024820184905291517f00000000000000000000000000000000000000000000000000000000000000009092169163095ea7b3916044808201926020929091908290030181600087803b15801561024357600080fd5b505af1158015610257573d6000803e3d6000fd5b505050506040513d602081101561026d57600080fd5b5050604080517f7acb775700000000000000000000000000000000000000000000000000000000815260048101839052336024820152905173ffffffffffffffffffffffffffffffffffffffff7f00000000000000000000000000000000000000000000000000000000000000001691637acb77579160448083019260209291908290030181600087803b15801561030457600080fd5b505af1158015610318573d6000803e3d6000fd5b505050506040513d602081101561032e57600080fd5b5050604080517f1e83409a000000000000000000000000000000000000000000000000000000008152336004820152905173ffffffffffffffffffffffffffffffffffffffff7f00000000000000000000000000000000000000000000000000000000000000001691631e83409a91602480830192600092919082900301818387803b1580156103bd57600080fd5b505af11580156103d1573d6000803e3d6000fd5b5050505050565b7f00000000000000000000000000000000000000000000000000000000000000008156fea2646970667358221220225b0565b62d3b7d94c52325677e259ad7dbdf5bca677e78b19df89dd67af39f64736f6c63430007050033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100415760003560e01c80634cf088d914610046578063a694fc3a14610077578063ef96d9ab14610096575b600080fd5b61004e61009e565b6040805173ffffffffffffffffffffffffffffffffffffffff9092168252519081900360200190f35b6100946004803603602081101561008d57600080fd5b50356100c2565b005b61004e6103d8565b7f000000000000000000000000000000000000000000000000000000000000000081565b604080517f23b872dd00000000000000000000000000000000000000000000000000000000815233600482015230602482015260448101839052905173ffffffffffffffffffffffffffffffffffffffff7f000000000000000000000000000000000000000000000000000000000000000016916323b872dd9160648083019260209291908290030181600087803b15801561015d57600080fd5b505af1158015610171573d6000803e3d6000fd5b505050506040513d602081101561018757600080fd5b5050604080517f095ea7b300000000000000000000000000000000000000000000000000000000815273ffffffffffffffffffffffffffffffffffffffff7f0000000000000000000000000000000000000000000000000000000000000000811660048301526024820184905291517f00000000000000000000000000000000000000000000000000000000000000009092169163095ea7b3916044808201926020929091908290030181600087803b15801561024357600080fd5b505af1158015610257573d6000803e3d6000fd5b505050506040513d602081101561026d57600080fd5b5050604080517f7acb775700000000000000000000000000000000000000000000000000000000815260048101839052336024820152905173ffffffffffffffffffffffffffffffffffffffff7f00000000000000000000000000000000000000000000000000000000000000001691637acb77579160448083019260209291908290030181600087803b15801561030457600080fd5b505af1158015610318573d6000803e3d6000fd5b505050506040513d602081101561032e57600080fd5b5050604080517f1e83409a000000000000000000000000000000000000000000000000000000008152336004820152905173ffffffffffffffffffffffffffffffffffffffff7f00000000000000000000000000000000000000000000000000000000000000001691631e83409a91602480830192600092919082900301818387803b1580156103bd57600080fd5b505af11580156103d1573d6000803e3d6000fd5b5050505050565b7f00000000000000000000000000000000000000000000000000000000000000008156fea2646970667358221220225b0565b62d3b7d94c52325677e259ad7dbdf5bca677e78b19df89dd67af39f64736f6c63430007050033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [],
+    "types": null
+  }
+}
